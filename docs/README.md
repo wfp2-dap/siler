@@ -2,6 +2,7 @@
 description: >-
   Siler is a set of general purpose high-level abstractions aiming an API for
   declarative programming in PHP.
+  This fork aims to serve a boilerplate for graphql compatible with php v7.0 and above.
 ---
 
 # Siler
