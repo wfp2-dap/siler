@@ -14,12 +14,12 @@ use function Siler\array_get;
 /**
  * Get a value from the $_COOKIE global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function cookie(?string $key = null, $default = null)
+function cookie(string $key = null, $default = null)
 {
     return array_get($_COOKIE, $key, $default);
 }
@@ -28,12 +28,12 @@ function cookie(?string $key = null, $default = null)
 /**
  * Get a value from the $_SESSION global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function session(?string $key = null, $default = null)
+function session(string $key = null, $default = null)
 {
     return array_get($_SESSION, $key, $default);
 }
@@ -54,12 +54,12 @@ function setsession(string $key, $value)
 /**
  * Get a value from the $_SESSION global and remove it.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function flash(?string $key = null, $default = null)
+function flash(string $key = null, $default = null)
 {
     $value = session($key, $default);
 
@@ -85,11 +85,11 @@ function redirect(string $url)
 /**
  * Returns a path based on the projects base url.
  *
- * @param ?string $path Concat some URI
+ * @param string $path Concat some URI
  *
  * @return string
  */
-function url(?string $path = null) : string
+function url(string $path = null) : string
 {
     if (is_null($path)) {
         $path = '/';
@@ -126,11 +126,11 @@ function path() : string
 /**
  * Get the absolute project's URI.
  *
- * @param ?string $protocol Pass a protocol, defaults to http or https
+ * @param string $protocol Pass a protocol, defaults to http or https
  *
  * @return string
  */
-function uri(?string $protocol = null) : string
+function uri(string $protocol = null) : string
 {
     $https = array_get($_SERVER, 'HTTPS', '');
 

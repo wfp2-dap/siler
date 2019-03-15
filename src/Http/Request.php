@@ -129,12 +129,12 @@ function header(string $key, $default = null)
 /**
  * Get a value from the $_GET global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function get(?string $key = null, $default = null)
+function get(string $key = null, $default = null)
 {
     return array_get($_GET, $key, $default);
 }
@@ -143,12 +143,12 @@ function get(?string $key = null, $default = null)
 /**
  * Get a value from the $_POST global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function post(?string $key = null, $default = null)
+function post(string $key = null, $default = null)
 {
     return array_get($_POST, $key, $default);
 }
@@ -157,12 +157,12 @@ function post(?string $key = null, $default = null)
 /**
  * Get a value from the $_REQUEST global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function input(?string $key = null, $default = null)
+function input(string $key = null, $default = null)
 {
     return array_get($_REQUEST, $key, $default);
 }
@@ -171,12 +171,12 @@ function input(?string $key = null, $default = null)
 /**
  * Get a value from the $_FILES global.
  *
- * @param ?string $key     The key to be searched
+ * @param string $key     The key to be searched
  * @param mixed   $default The default value to be returned when the key don't exists
  *
  * @return mixed
  */
-function file(?string $key = null, $default = null)
+function file(string $key = null, $default = null)
 {
     return array_get($_FILES, $key, $default);
 }
@@ -210,11 +210,11 @@ function method() : string
  * Checks for the current HTTP request method.
  *
  * @param string|array $method        The given method to check on
- * @param ?string      $requestMethod
+ * @param string      $requestMethod
  *
  * @return bool
  */
-function method_is($method, ?string $requestMethod = null) : bool
+function method_is($method, string $requestMethod = null) : bool
 {
     if (is_null($requestMethod)) {
         $requestMethod = method();

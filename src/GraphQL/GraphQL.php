@@ -289,11 +289,11 @@ function listen(string $eventName, callable $listener)
  * Returns a GraphQL value definition.
  *
  * @param string  $name
- * @param ?string $description
+ * @param string $description
  *
  * @return \Closure -> value -> array
  */
-function val(string $name, ?string $description = null) : \Closure
+function val(string $name, string $description = null) : \Closure
 {
     return function ($value) use ($name, $description) : array {
         return [
@@ -309,11 +309,11 @@ function val(string $name, ?string $description = null) : \Closure
  *  Returns a GraphQL Enum type.
  *
  * @param string  $name
- * @param ?string $description
+ * @param string $description
  *
  * @return \Closure -> values -> EnumType
  */
-function enum(string $name, ?string $description = null) : \Closure
+function enum(string $name, string $description = null) : \Closure
 {
     return function (array $values) use ($name, $description) : EnumType {
         return new EnumType(['name' => $name, 'description' => $description, 'values' => $values]);
@@ -326,11 +326,11 @@ function enum(string $name, ?string $description = null) : \Closure
  *
  * @param Type    $type
  * @param string  $name
- * @param ?string $description
+ * @param string $description
  *
  * @return \Closure -> (resolve, args) -> array
  */
-function field(Type $type, string $name, ?string $description = null) : \Closure
+function field(Type $type, string $name, string $description = null) : \Closure
 {
     return function ($resolve = null, array $args = null) use ($type, $name, $description) {
         if (is_string($resolve)) {
@@ -353,12 +353,12 @@ function field(Type $type, string $name, ?string $description = null) : \Closure
 /**
  * Returns an evaluable String field definition.
  *
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return StringType|\Closure -> (resolve, args) -> array
  */
-function str(?string $name = null, ?string $description = null)
+function str(string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::string();
@@ -371,12 +371,12 @@ function str(?string $name = null, ?string $description = null)
 /**
  * Returns an evaluable Integer field definition.
  *
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return IntType|\Closure -> (resolve, args) -> array
  */
-function int(?string $name = null, ?string $description = null)
+function int(string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::int();
@@ -389,12 +389,12 @@ function int(?string $name = null, ?string $description = null)
 /**
  * Returns an evaluable Float field definition.
  *
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return FloatType|\Closure -> (resolve, args) -> array
  */
-function float(?string $name = null, ?string $description = null)
+function float(string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::float();
@@ -407,12 +407,12 @@ function float(?string $name = null, ?string $description = null)
 /**
  * Returns an evaluable Boolean field definition.
  *
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return BooleanType|\Closure -> (resolve, args) -> array
  */
-function bool(?string $name = null, ?string $description = null)
+function bool(string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::boolean();
@@ -424,12 +424,12 @@ function bool(?string $name = null, ?string $description = null)
 
 /**
  * @param Type    $type
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return ListOfType|\Closure -> (resolve, args) -> array
  */
-function list_of(Type $type, ?string $name = null, ?string $description = null)
+function list_of(Type $type, string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::listOf($type);
@@ -442,12 +442,12 @@ function list_of(Type $type, ?string $name = null, ?string $description = null)
 /**
  * Returns an evaluable Id field definition.
  *
- * @param ?string $name
- * @param ?string $description
+ * @param string $name
+ * @param string $description
  *
  * @return IDType|\Closure -> (resolve, args) -> array
  */
-function id(?string $name = null, ?string $description = null)
+function id(string $name = null, string $description = null)
 {
     if (is_null($name)) {
         return Type::id();
@@ -461,11 +461,11 @@ function id(?string $name = null, ?string $description = null)
  * Returns an InterfaceType factory function.
  *
  * @param string  $name
- * @param ?string $description
+ * @param string $description
  *
  * @return \Closure -> fields -> resolve -> InterfaceType
  */
-function itype(string $name, ?string $description = null)
+function itype(string $name, string $description = null)
 {
     return function (array $fields = []) use ($name, $description) {
         return function (callable $resolveType) use ($name, $description, $fields) {
@@ -479,11 +479,11 @@ function itype(string $name, ?string $description = null)
  * Returns an ObjectType factory function.
  *
  * @param string  $name
- * @param ?string $description
+ * @param string $description
  *
  * @return \Closure -> fields -> resolve -> ObjectType
  */
-function type(string $name, ?string $description = null) : \Closure
+function type(string $name, string $description = null) : \Closure
 {
     return function (array $fields = []) use ($name, $description) : \Closure {
         return function (callable $resolve = null) use ($name, $description, $fields) : ObjectType {

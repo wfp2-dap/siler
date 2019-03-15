@@ -74,7 +74,7 @@ class SubscriptionsManager
      *
      * @return void
      */
-    public function handleConnectionInit(ConnectionInterface $conn, ?array $data = null)
+    public function handleConnectionInit(ConnectionInterface $conn, array $data = null)
     {
         try {
             $this->connStorage->offsetSet($conn, []);
@@ -318,7 +318,7 @@ class SubscriptionsManager
      *
      * @return array|\GraphQL\Executor\Promise\Promise
      */
-    private function execute(string $query, $payload = null, ?array $variables = null)
+    private function execute(string $query, $payload = null, array $variables = null)
     {
         return \GraphQL\GraphQL::executeQuery(
             $this->schema,
